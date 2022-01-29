@@ -1,5 +1,6 @@
 <template>
-<div>satistics.vue</div>
+<div>satistics.vue
+  <Nav /></div>
 </template>
 
 <script lang="ts">

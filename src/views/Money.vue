@@ -1,5 +1,8 @@
 <template>
+  <div>
 <div>money</div>
+    <Nav />
+  </div>
 </template>
 
 <script lang="ts">
