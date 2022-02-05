@@ -1,6 +1,9 @@
 <template>
-<div>labels.vue
-  <Nav /></div>
+  <div>
+    <layout>
+      <p>labels</p>
+    </layout>
+  </div>
 </template>
 
 <script lang="ts">

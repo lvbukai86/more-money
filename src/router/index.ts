@@ -4,26 +4,33 @@ import Home from '../views/Home.vue';
 import Money from '@/views/Money.vue';
 import Labels from '@/views/Labels.vue';
 import statistics from '@/views/Statistics.vue';
+import NotFound from '@/views/NotFound.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
-  {
-    path:'/',
-    redirect:'/money'
-  },
-  {
-    path:'/money',
-    component:Money
-  },
-  {
-    path:'/labels',
-    component:Labels
-  },
-  {
-    path:'/statistics',
-    component:statistics
-  }
+
+    {
+        path: '/',
+        redirect: '/money'
+    },
+    {
+        path: '/money',
+        component: Money
+    },
+    {
+        path: '/labels',
+        component: Labels
+    },
+    {
+        path: '/statistics',
+        component: statistics
+    },
+    {
+        // 会匹配所有路径
+        path: '*',
+      component: NotFound
+    }
 
 ];
 
