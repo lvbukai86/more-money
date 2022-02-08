@@ -15,16 +15,20 @@ import Types from '@/components/Money/Types.vue';
 import Tags from '@/components/Money/Tags.vue';
 import {Component, Watch} from 'vue-property-decorator';
 import Vue from 'vue';
+import recordListModel from '@/models/recordListModel';
+import tagListModel from '@/models/tagListModel';
 
-const  recordList:RecordItem[]=[];
+const recordList=recordListModel.fetch();//获取记录
+const tagList=tagListModel.fetch();//获取标签
+
 
 @Component({
   components: {Tags, Notes, Types, NumberPad}
 })
 export default class Money extends Vue {
 
-  tags = ['衣', '食', '住', '行'];
-  recordList: RecordItem[]=JSON.parse(window.localStorage.getItem('recordList') || '[]');
+  tags = tagList;
+  recordList: RecordItem[] = recordList;
   record: RecordItem ={
     tags:[], notes:'',type:'-',amount:0
   };
@@ -42,13 +46,13 @@ export default class Money extends Vue {
    this.record.amount=parseFloat(value);
   }
   saveRecord(){
-    const record2 :RecordItem=JSON.parse(JSON.stringify(this.record));
+    const record2 :RecordItem=recordListModel.clone(this.record);
     record2.createAt=new Date();
     this.recordList.push(record2);
   }
   @Watch('recordList')
   onRecordListChange(){
-    window.localStorage.setItem('recordList',JSON.stringify(this.recordList))
+    recordListModel.save(this.recordList);
   }
 }
 </script>
