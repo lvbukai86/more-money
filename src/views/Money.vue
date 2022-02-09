@@ -2,7 +2,7 @@
   <div>
     <layout class-prefix="layout">
       <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
-      <Notes @update:value="onUpdateNotes" field-name="备注"
+      <FormItem @update:value="onUpdateNotes" field-name="备注"
       placeholder="在这里输入备注"/>
       <Types :value.sync="record.type"/>
       <Tags :data-source.sync="tags" @update:value="OnUpdateTags"/>
@@ -24,7 +24,7 @@ const tagList=tagListModel.fetch();//获取标签
 
 
 @Component({
-  components: {Tags, Notes: FormItem, Types, NumberPad}
+  components: {Tags,  FormItem, Types, NumberPad}
 })
 export default class Money extends Vue {
 
