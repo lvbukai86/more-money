@@ -19,7 +19,6 @@ import Tags from '@/components/Money/Tags.vue';
 import {Component, Watch} from 'vue-property-decorator';
 import Vue from 'vue';
 import recordListModel from '@/models/recordListModel';
-import tagListModel from '@/models/tagListModel';
 
 const recordList=recordListModel.fetch();//获取记录
 @Component({
