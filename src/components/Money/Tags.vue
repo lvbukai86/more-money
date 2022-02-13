@@ -18,28 +18,24 @@ import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
 import {mixins} from 'vue-class-component';
 import TagHelper from '@/mixins/tagHelper';
-@Component({
-  computed: {
-    tagList(){
-      return this.$store.state.tagList;
-    }
-  }
-})
+@Component
 export default class Tags extends mixins(TagHelper){
-  selectedTags: string[]=[];
+  selectedTags: string[] = [];
+  get tagList() {
+    return this.$store.state.tagList;
+  }
   created() {
     this.$store.commit('fetchTags');
   }
-  toggle(tag: string){
-    const index=this.selectedTags.indexOf(tag);
-    if(index >= 0){
-      this.selectedTags.splice(index,1);
-    }else{
+  toggle(tag: string) {
+    const index = this.selectedTags.indexOf(tag);
+    if (index >= 0) {
+      this.selectedTags.splice(index, 1);
+    } else {
       this.selectedTags.push(tag);
     }
-    this.$emit('update:value',this.selectedTags);
+    this.$emit('update:value', this.selectedTags);
   }
-
 }
 </script>
 
